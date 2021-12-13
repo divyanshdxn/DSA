@@ -11,10 +11,10 @@ public class CyclicSort {
         sort(arr);
         System.out.println(Arrays.toString(arr));
         System.out.println(missingNumber(miss));
-
-
         List<Integer> list = findDisappearedNumbers(new int[]{4,3,2,7,8,2,3,1});
         System.out.println(list);
+
+        System.out.println(findDuplicate(new int[]{4,3,2,7,8,2,3,1}));
 
     }
 
@@ -67,6 +67,44 @@ public class CyclicSort {
         for(i=0;i<nums.length;i++){
             if(nums[i]!=i+1){
                 arr.add(i+1);
+            }
+        }
+        return arr;
+    }
+
+    public static int findDuplicate(int[] nums) {
+        int i=0;
+        while(i<nums.length ){
+            if( nums[i]==i+1 ){
+                i++;
+            } else {
+                if(nums[nums[i]-1]==nums[i]) {
+                    return nums[i];
+                } else {
+                    int temp = nums[nums[i] - 1];
+                    nums[nums[i] - 1] = nums[i];
+                    nums[i] = temp;
+                }
+            }
+        }
+        return nums.length;
+    }
+
+    public List<Integer> findDuplicates(int[] nums) {
+        List<Integer> arr = new ArrayList<>();
+        int i=0;
+        while(i<nums.length ){
+            if( nums[i]==i+1 ){
+                i++;
+            } else {
+                if( nums[nums[i]-1]==nums[i]) {
+                    arr.add(nums[i]);
+                } else {
+                    int temp = nums[nums[i] - 1];
+                    nums[nums[i] - 1] = nums[i];
+                    nums[i] = temp;
+                }
+
             }
         }
         return arr;

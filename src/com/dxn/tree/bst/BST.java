@@ -37,6 +37,24 @@ public class BST {
         }
     }
 
+
+    void insertR(int data) {
+        root = insertRecursively(root,data);
+    }
+
+    Node insertRecursively(Node root, int data) {
+        if(root==null) {
+            return new Node(data);
+        } else {
+            if(root.data>data) {
+                root.left=insertRecursively(root.left,data);
+            } else {
+                root.right=insertRecursively(root.right,data);
+            }
+        }
+        return root;
+    }
+
     void find(int data) {
         
     }
