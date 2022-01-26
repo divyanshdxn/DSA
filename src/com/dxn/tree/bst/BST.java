@@ -1,6 +1,6 @@
 package com.dxn.tree.bst;
 
-public class BST {
+class BST {
 
     private static class Node {
         int data;
@@ -14,7 +14,7 @@ public class BST {
 
     private Node root;
 
-    void insert(int data) {
+    public void insert(int data) {
         Node newNode = new Node(data);
         if (root == null) {
             root = newNode;
@@ -37,38 +37,130 @@ public class BST {
         }
     }
 
-
-    void insertR(int data) {
-        root = insertRecursively(root,data);
+    public void delete(int data) {
+        deleteNode(root, data);
     }
 
-    Node insertRecursively(Node root, int data) {
-        if(root==null) {
+    public static Node getMinimumNode(Node curr) {
+        while (curr.left != null) {
+            curr = curr.left;
+        }
+        return curr;
+    }
+
+    public int countLeaf() {
+        return countLeaf(root);
+    }
+
+    public void insertRecursively(int data) {
+        root = insertRecursively(root, data);
+    }
+
+    public void displayInorder() {
+        printInOrder(root);
+    }
+
+    public void displayPreorder() {
+        printPreOrder(root);
+    }
+
+    public void displayPostorder() {
+        printPostOrder(root);
+    }
+
+    private Node insertRecursively(Node root, int data) {
+        if (root == null) {
             return new Node(data);
         } else {
-            if(root.data>data) {
-                root.left=insertRecursively(root.left,data);
+            if (root.data > data) {
+                root.left = insertRecursively(root.left, data);
             } else {
-                root.right=insertRecursively(root.right,data);
+                root.right = insertRecursively(root.right, data);
             }
         }
         return root;
     }
 
-    void find(int data) {
-        
-    }
-
-    void display() {
-        print(root);
-    }
-
-    private void print(Node node) {
+    private void printInOrder(Node node) {
         if (node == null) {
             return;
         }
-        System.out.println(node.data);
-        print(node.left);
-        print(node.right);
+        printInOrder(node.left);
+        System.out.print(node.data + " ");
+        printInOrder(node.right);
+    }
+
+    private void printPreOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        System.out.print(node.data + " ");
+        printPreOrder(node.left);
+        printPreOrder(node.right);
+    }
+
+    private void printPostOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        printPostOrder(node.left);
+        printPostOrder(node.right);
+        System.out.print(node.data + " ");
+    }
+
+    private Node deleteNode(Node root, int data) {
+        Node parent = null;
+        Node curr = root;
+        while (curr != null && curr.data != data) {
+            parent = curr;
+            if (data < curr.data) {
+                curr = curr.left;
+            } else {
+                curr = curr.right;
+            }
+        }
+        if (curr == null) {
+            return root;
+        }
+        if (curr.left == null && curr.right == null) {
+            if (curr != root) {
+                if (parent.left == curr) {
+                    parent.left = null;
+                } else {
+                    parent.right = null;
+                }
+            } else {
+                root = null;
+            }
+        } else if (curr.left != null && curr.right != null) {
+            Node successor = getMinimumNode(curr.right);
+            int val = successor.data;
+            deleteNode(root, successor.data);
+            curr.data = val;
+        } else {
+            Node child = (curr.left != null) ? curr.left : curr.right;
+            if (curr != root) {
+                if (curr == parent.left) {
+                    parent.left = child;
+                } else {
+                    parent.right = child;
+                }
+            } else {
+                root = child;
+            }
+        }
+        return root;
+    }
+
+    private static int countLeaf(Node node) {
+        if(node == null) {
+            return 0;
+        }
+        if (node.left == null && node.right == null) {
+            return 1;
+        }
+        else {
+            return countLeaf(node.left) + countLeaf(node.right);
+        }
     }
 }
