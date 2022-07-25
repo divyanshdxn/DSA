@@ -1,4 +1,4 @@
-package com.dxn.stack.c;
+package com.dxn.stack.cngeright;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

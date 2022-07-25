@@ -1,4 +1,4 @@
-package com.dxn.stack.a;
+package com.dxn.stack.aduplicate;
 
 import java.util.Scanner;
 import java.util.Stack;

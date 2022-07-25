@@ -1,4 +1,4 @@
-package com.dxn.stack.d;
+package com.dxn.stack.dstockspan;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

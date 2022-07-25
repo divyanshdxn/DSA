@@ -15,7 +15,7 @@
   Span**  [Code](https://www.pepcoding.com/resources/online-java-foundation/stacks-and-queues/stock-span-official/ojquestion)
 - [ ] **Largest Area
   Histogram**  [Code](https://www.pepcoding.com/resources/online-java-foundation/stacks-and-queues/lah-official/ojquestion)
-- [ ] **Sliding Window
+- [x] **Sliding Window
   Maximum**  [Code](https://www.pepcoding.com/resources/online-java-foundation/stacks-and-queues/sliding-window=maximum-official/ojquestion)
 - [ ] **Infix
   Evaluation**  [Code](https://www.pepcoding.com/resources/online-java-foundation/stacks-and-queues/infix-evaluation-official/ojquestion)
@@ -23,9 +23,8 @@
   Conversion**  [Code](https://www.pepcoding.com/resources/online-java-foundation/stacks-and-queues/infix-conversions-official/ojquestion)
 - [ ] **Postfix Evaluation and
   Conversion**  [Code](https://www.pepcoding.com/resources/online-java-foundation/stacks-and-queues/postfix-evaluation-conversions-official/ojquestion)
-- [ ] **
-  Celebrity**  [Code](https://www.pepcoding.com/resources/online-java-foundation/stacks-and-queues/celebrity-problem-official/ojquestion)
-- [ ] **Merge Overlapping
+- [ ] **Celebrity**  [Code](https://www.pepcoding.com/resources/online-java-foundation/stacks-and-queues/celebrity-problem-official/ojquestion)
+- [x] **Merge Overlapping
   Interval**  [Code](https://www.pepcoding.com/resources/online-java-foundation/stacks-and-queues/merge-overlapping-interval-official/ojquestion)
 - [ ] **Smallest Number Following
   Pattern**  [Code](https://www.pepcoding.com/resources/online-java-foundation/stacks-and-queues/smallest-number-following-pattern-official/ojquestion)
