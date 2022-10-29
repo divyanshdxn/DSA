@@ -3,6 +3,7 @@ package com.dxn.graph;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class HasPath {
     static class Edge {
@@ -39,5 +40,22 @@ public class HasPath {
         int dest = Integer.parseInt(br.readLine());
 
         // write your code here
+        boolean[] isVisited = new boolean[vtces];
+        Arrays.fill(isVisited, false);
+        boolean result = hasPath(graph, src, dest, isVisited);
+        System.out.println(result);
+    }
+
+    public static boolean hasPath(ArrayList<Edge>[] graph, int src, int dest, boolean[] isVisited) {
+        if(src == dest) {
+            return true;
+        }
+        isVisited[src] = true;
+        for(Edge edge : graph[src]) {
+            if(!isVisited[edge.nbr]) {
+                return hasPath(graph,edge.nbr, dest, isVisited);
+            }
+        }
+        return false;
     }
 }
