@@ -22,12 +22,12 @@ public class MultiSolver {
         int wsf;
         String psf;
 
-        Pair(int wsf, String psf){
+        Pair(int wsf, String psf) {
             this.wsf = wsf;
             this.psf = psf;
         }
 
-        public int compareTo(Pair o){
+        public int compareTo(Pair o) {
             return this.wsf - o.wsf;
         }
     }
@@ -68,7 +68,6 @@ public class MultiSolver {
     }
 
 
-
     static String spath;
     static Integer spathwt = Integer.MAX_VALUE;
     static String lpath;
@@ -81,6 +80,47 @@ public class MultiSolver {
 
 
     public static void multisolver(ArrayList<Edge>[] graph, int src, int dest, boolean[] visited, int criteria, int k, String psf, int wsf) {
-        
+        if(src == dest) {
+            if(wsf < spathwt) {
+                spathwt = wsf;
+                spath = psf;
+            }
+
+            if(wsf > lpathwt) {
+                lpathwt = wsf;
+                lpath = psf;
+            }
+
+            if(wsf > criteria && wsf < cpathwt) {
+                cpathwt = wsf;
+                cpath = psf;
+            }
+
+            if(wsf < criteria && wsf > fpathwt) {
+                fpathwt = wsf;
+                fpath = psf;
+            }
+
+            if(pq.size() < k) {
+                // just add
+                pq.add(new Pair(wsf, psf));
+            } else {
+                // else compare
+                if(pq.peek().wsf < wsf) {
+                   pq.remove();
+                   pq.add(new Pair(wsf, psf));
+                }
+            }
+
+            return;
+        }
+
+        visited[src] = true;
+        for (Edge e : graph[src]) {
+            if (!visited[e.nbr]) {
+                multisolver(graph, e.nbr, dest, visited, criteria, k, psf + e.nbr, wsf + e.wt);
+            }
+        }
+        visited[src] = false;
     }
 }
