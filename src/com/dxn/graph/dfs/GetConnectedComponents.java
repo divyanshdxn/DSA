@@ -39,7 +39,24 @@ public class GetConnectedComponents {
         ArrayList<ArrayList<Integer>> comps = new ArrayList<>();
 
         // write your code here
-
+        boolean[] visited = new boolean[vtces];
+        for (int i = 0; i < vtces; i++) {
+            ArrayList<Integer> connected = new ArrayList<>();
+            if(!visited[i]) {
+                doDFS(graph, i, connected, visited);
+                comps.add(connected);
+            }
+        }
         System.out.println(comps);
+    }
+
+    private static void doDFS(ArrayList<Edge>[] graph, int src, ArrayList<Integer> connected, boolean[] visited) {
+        visited[src] = true;
+        connected.add(src);
+        for(Edge e: graph[src]) {
+            if(!visited[e.nbr]) {
+                doDFS(graph, e.nbr, connected, visited);
+            }
+        }
     }
 }
